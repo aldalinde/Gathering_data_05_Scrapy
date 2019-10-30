@@ -52,31 +52,3 @@ class SpiderSjSpider(scrapy.Spider):
         yield VacancyparserItem(name=name, link=link, salary=salary, currency=currency, min_salary=min_salary,
                                 max_salary=max_salary)
 
-'''        
-        
-
-
-        if salary:
-            if salary == 'По договорённости':
-                currency = np.nan
-                min_salary = np.nan
-                max_salary = np.nan
-
-            elif salary == 'от':
-                currency = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[2]::text').extract_first()
-                min_salary = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[1]::text').extract_first()
-                max_salary = np.nan
-        else:
-            check = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[2]::text').extract()
-            if '-' in check:
-                currency = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[4]::text').extract_first()
-                min_salary = response.css(
-                    'span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[1]::text').extract_first()
-                max_salary = response.css(
-                    'span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[3]::text').extract_first()
-
-            else:
-                currency = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[2]::text').extract_first()
-                min_salary = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[1]::text').extract_first()
-                max_salary = response.css('span[class*="_3mfro _2Wp8I ZON4b PlM3e _2JVkc"] span[1]::text').extract_first()
-'''
